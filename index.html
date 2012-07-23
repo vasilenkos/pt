@@ -1,0 +1,148 @@
+﻿<!doctype html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <title>Переводим в параллель</title>
+
+        <link rel="stylesheet" type="text/css" media="all" href="css/reset.css" />
+        <link rel="stylesheet" type="text/css" media="all" href="css/style.css" />
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+        <script src="js/namespace.js"></script>
+        <script src="js/pt.model.js"></script>
+        <script src="js/pt.view.js"></script>
+        <script src="js/pt.controller.js"></script>
+
+        <script>
+            $(document).ready( function() {
+
+                var Runtime = namespace('PT.Runtime');
+                var MainPage = namespace('PT.Pages.MainPage');
+
+                Runtime.MainPage = new MainPage.Controller(
+                    new MainPage.View(
+                        // Layout binding
+                        {
+                            LeftPanel: {
+                                Element: $('#l-left-panel'),
+                                Tabs: {
+                                    0: {
+                                        Element: $('#id-left-panel-switch-panel-source-iframe'),
+                                        Handle: $('#id-switch-source-to-iframe'),
+                                        AdditionalPanel: {
+                                            Element: $('#id-left-switch-container-iframe'),
+                                            LocationInput: $('#id-left-switch-container-iframe-location'),
+                                            LocationGoButton: $('#id-left-switch-container-iframe-go-button')
+                                        },
+                                        SourceIFrame: $('#id-source-iframe')
+                                    },
+                                    1: {
+                                        Element: $('#id-left-panel-switch-panel-source-text'),
+                                        Handle: $('#id-switch-source-to-text'),
+                                        SourceText: $('#id-source-text')
+                                    }
+                                }
+                            },
+                            RightPanel: {
+                                Element: $('#l-right-panel'),
+                                Tabs: {
+                                    0: {
+                                        Element: $('#id-right-panel-switch-panel-destination-wysiwyg'),
+                                        Handle: $('#id-switch-destination-to-wysiwyg'),
+                                        AdditionalPanel: {
+                                            Element: $('#id-right-switch-container-wysiwyg'),
+                                            Buttons: {
+                                                H1: $('#id-right-switch-container-wysiwyg-button-h1'),
+                                                H2: $('#id-right-switch-container-wysiwyg-button-h2'),
+                                                H3: $('#id-right-switch-container-wysiwyg-button-h3'),
+                                                AlignLeft: $('#id-right-switch-container-wysiwyg-button-a-left'),
+                                                AlignCenter: $('#id-right-switch-container-wysiwyg-button-a-center'),
+                                                AlignRight: $('#id-right-switch-container-wysiwyg-button-a-right')
+                                            }
+                                        },
+                                        DestinationWYSIWYG: $('#id-destination-wysiwyg')
+                                    },
+                                    1: {
+                                        Handle: $('#id-switch-destination-to-text'),
+                                        Element : $('#id-right-panel-switch-panel-destination-text'),
+                                        DestinationText: $('#id-destination-text')
+                                    }
+                                }
+                            }
+                        },
+                        // Options
+                        {
+                            ActiveTabHandleClassName: 'active',
+                            ActiveTabElementClassName: 'visible',
+                            ActiveTabAdditionalPanelClassName: 'visible'
+                        }
+                    ),
+                    new MainPage.Model()
+                ).Activate();
+                
+                // Let's init wysiwyg
+                var loDocument = $("#id-destination-wysiwyg").contents().get(0);
+                loDocument.open();
+                loDocument.write('<p>123123123213</p>');
+                loDocument.close();
+                loDocument.designMode = 'on';
+                
+                //Let's switch to iframe and wysiwyg
+                $("#id-switch-source-to-iframe").click();
+                $("#id-switch-destination-to-wysiwyg").click();
+            });
+        </script>
+    </head>
+    <body>
+        <div id="l-layout">
+            <div id="l-left-panel">
+                <div class="b-panel">
+                    <h1>Источник</h1>
+                    <div class="b-panel-switch">
+                        <a id="id-switch-source-to-iframe" href="#">IFrame</a>
+                        <a id="id-switch-source-to-text" href="#">Текст</a>
+                        <div class="b-panel-switch-container" id="id-left-switch-container-iframe">
+                            <input type="text" id="id-left-switch-container-iframe-location"></input>
+                            <a href="#" id="id-left-switch-container-iframe-go-button">↙ Перейти</a>
+                        </div>
+                    </div>
+                    
+                    <div class="b-tab b-panel-iframe" id="id-left-panel-switch-panel-source-iframe">
+                        <iframe id="id-source-iframe" src="http://blog.mecheye.net/2012/06/the-linux-graphics-stack/"></iframe>
+                    </div>
+
+                    <div class="b-tab b-panel-textarea" id="id-left-panel-switch-panel-source-text">
+                        <textarea id="id-source-text"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div id="l-right-panel">
+                <div class="b-panel">
+                    <h1>Перевод</h1>
+                    <div class="b-panel-switch">
+                        <a id="id-switch-destination-to-wysiwyg" href="#">WYSIWYG</a>
+                        <a id="id-switch-destination-to-text" href="#">Текст</a>
+                        <div class="b-panel-switch-container" id="id-right-switch-container-wysiwyg">
+                            <a href="#" id="id-right-switch-container-wysiwyg-button-h1">H1</a>
+                            <a href="#" id="id-right-switch-container-wysiwyg-button-h2">H2</a>
+                            <a href="#" id="id-right-switch-container-wysiwyg-button-h3">H3</a>
+                            <a href="#" id="id-right-switch-container-wysiwyg-button-a-left">Лево</a>
+                            <a href="#" id="id-right-switch-container-wysiwyg-button-a-center">Центр</a>
+                            <a href="#" id="id-right-switch-container-wysiwyg-button-a-right">Право</a>
+                        </div>
+                    </div>
+
+                    <div class="b-tab b-panel-iframe" id="id-right-panel-switch-panel-destination-wysiwyg">
+                        <iframe id="id-destination-wysiwyg"></iframe>
+                    </div>
+
+                    <div class="b-tab b-panel-textarea" id="id-right-panel-switch-panel-destination-text">
+                        <textarea id="id-destination-text"></textarea>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html> 

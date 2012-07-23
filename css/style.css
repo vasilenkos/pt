@@ -1,0 +1,27 @@
+/* Основные стили */
+.test { background: red; }
+.hidden { display: none; }
+.visible { display: block !important; }
+
+BODY { width: 100%; height: 100%; }
+#l-layout { width: 100%; height: 100%; }
+    #l-left-panel { width: 50%; left: 0; top: 0; bottom: 0; position: absolute; z-order: 1000; }
+    #l-right-panel { width: 50%; right: 0; top: 0; bottom: 0; position: absolute; z-order: 1; }
+
+DIV.b-panel { padding-left: 20px; padding-right: 20px; }
+    DIV.b-panel>H1 { display: block; font-size: 36px; font-family: Arial; padding-top: 20px; }
+    DIV.b-panel>DIV.b-panel-switch { padding-top: 20px; width: 100%; height: 60px; }
+        DIV.b-panel>DIV.b-panel-switch>A { display: block; float: left; font-size: 16px; color: gray; text-decoration: none; border-bottom: 15px solid #eee; padding-left: 5px; padding-right: 5px; padding-bottom: 5px; }
+            DIV.b-panel>DIV.b-panel-switch>A.active { color: black; border-bottom: 15px solid green; font-weight: bold; }
+        DIV.b-panel>DIV.b-panel-switch>DIV.b-panel-switch-container { float: right; margin-top: -4px; padding-right: 20px; display: none; }
+            DIV.b-panel>DIV.b-panel-switch>DIV.b-panel-switch-container>INPUT { width: 300px; border: 1px solid #ddd; padding: 2px; }
+            DIV.b-panel>DIV.b-panel-switch>DIV.b-panel-switch-container>A { font-size: 16px; color: black; text-decoration: none; border-bottom: 15px solid transparent; padding-left: 5px; padding-right: 5px; padding-bottom: 5px; }
+    DIV.b-panel>DIV.b-panel-iframe { border: 1px solid #ddd; position: absolute; top: 130px; bottom: 20px;  }
+        DIV.b-panel>DIV.b-panel-iframe>IFRAME { display: block; width: 100%; height: 100%; border: 0; }
+    DIV.b-panel>DIV.b-panel-textarea { border: 1px solid #ddd; position: absolute; top: 130px; bottom: 20px; padding: 10px; }
+        DIV.b-panel>DIV.b-panel-textarea>TEXTAREA { width: 100%; height: 100%; border: 0; border-color: transparent; padding: 0; font-size: 14px; }
+
+DIV.b-tab { display: none; }        
+DIV.b-panel-iframe { left: 20px; right: 20px; }
+DIV.b-panel-textarea { left: 20px; right: 20px; }                
+
