@@ -39,6 +39,10 @@ MainPage.View = function( poLayout, poOptions ) {
                             H1: null,
                             H2: null,
                             H3: null,
+                            Bold: null,
+                            Italic: null,
+                            Underline: null,
+                            Strikethrough: null,
                             AlignLeft: null,
                             AlignCenter: null,
                             AlignRight: null
