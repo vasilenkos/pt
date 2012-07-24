@@ -26,13 +26,14 @@ DIV.b-panel-iframe { left: 20px; right: 20px; }
 DIV.b-panel-textarea { left: 20px; right: 20px; }                
 
 /* WYSIWYG styles */
-#id-right-switch-container-wysiwyg>A { display: block; float: left; height: 24px; width: 24px; background-repeat: no-repeat; background-position: 2px 2px;  padding: 2px !important; margin: 0 0 0 4px !important; border: 0px !important; opacity: 0.4; }
+#id-right-switch-container-wysiwyg>A { display: block; float: left; height: 24px; width: 24px; background-repeat: no-repeat; background-position: 2px 2px;  padding: 2px !important; margin: 0 0 0 4px !important; border: 0px !important; opacity: 0.3; }
 #id-right-switch-container-wysiwyg>A:hover { opacity: 1; background-color: #eee; }
 #id-right-switch-container-wysiwyg>SPAN { display: block; float: left; height: 24px; width: 24px; }
 
 #id-right-switch-container-wysiwyg-button-h1 { background-image: url(../i/icons/h1.png); }
 #id-right-switch-container-wysiwyg-button-h2 { background-image: url(../i/icons/h2.png); }
 #id-right-switch-container-wysiwyg-button-h3 { background-image: url(../i/icons/h3.png); }
+#id-right-switch-container-wysiwyg-button-para { background-image: url(../i/icons/para.png); }
 #id-right-switch-container-wysiwyg-button-bold { background-image: url(../i/icons/bold.png); }
 #id-right-switch-container-wysiwyg-button-italic { background-image: url(../i/icons/italic.png); }
 #id-right-switch-container-wysiwyg-button-underline { background-image: url(../i/icons/underline.png); }
@@ -40,3 +41,8 @@ DIV.b-panel-textarea { left: 20px; right: 20px; }
 #id-right-switch-container-wysiwyg-button-a-left { background-image: url(../i/icons/left.png); }
 #id-right-switch-container-wysiwyg-button-a-center { background-image: url(../i/icons/center.png); }
 #id-right-switch-container-wysiwyg-button-a-right { background-image: url(../i/icons/right.png); }
+#id-right-switch-container-wysiwyg-button-ul { background-image: url(../i/icons/ul.png); }
+#id-right-switch-container-wysiwyg-button-ol { background-image: url(../i/icons/ol.png); }
+#id-right-switch-container-wysiwyg-button-indent { background-image: url(../i/icons/indent.png); }
+#id-right-switch-container-wysiwyg-button-outdent { background-image: url(../i/icons/outdent.png); }
+#id-right-switch-container-wysiwyg-button-blockquote { background-image: url(../i/icons/blockquote.png); }

@@ -39,13 +39,19 @@ MainPage.View = function( poLayout, poOptions ) {
                             H1: null,
                             H2: null,
                             H3: null,
+                            Paragraph: null,
                             Bold: null,
                             Italic: null,
                             Underline: null,
                             Strikethrough: null,
                             AlignLeft: null,
                             AlignCenter: null,
-                            AlignRight: null
+                            AlignRight: null,
+                            UnorderedList: null,
+                            OrderedList: null,
+                            Indent: null,
+                            Outdent: null,
+                            Blockquote: null
                         }
                     },
                     DestinationWYSIWYG: null

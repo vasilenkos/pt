@@ -57,13 +57,19 @@
                                                 H1: $('#id-right-switch-container-wysiwyg-button-h1'),
                                                 H2: $('#id-right-switch-container-wysiwyg-button-h2'),
                                                 H3: $('#id-right-switch-container-wysiwyg-button-h3'),
+                                                Paragraph: $('#id-right-switch-container-wysiwyg-button-para'),
                                                 Bold: $('#id-right-switch-container-wysiwyg-button-bold'),
                                                 Italic: $('#id-right-switch-container-wysiwyg-button-italic'),
                                                 Underline: $('#id-right-switch-container-wysiwyg-button-underline'),
                                                 Strikethrough: $('#id-right-switch-container-wysiwyg-button-strikethrough'),
                                                 AlignLeft: $('#id-right-switch-container-wysiwyg-button-a-left'),
                                                 AlignCenter: $('#id-right-switch-container-wysiwyg-button-a-center'),
-                                                AlignRight: $('#id-right-switch-container-wysiwyg-button-a-right')
+                                                AlignRight: $('#id-right-switch-container-wysiwyg-button-a-right'),
+                                                UnorderedList: $('#id-right-switch-container-wysiwyg-button-ul'),
+                                                OrderedList: $('#id-right-switch-container-wysiwyg-button-ol'),
+                                                Indent: $('#id-right-switch-container-wysiwyg-button-indent'),
+                                                Outdent: $('#id-right-switch-container-wysiwyg-button-outdent'),
+                                                Blockquote: $('#id-right-switch-container-wysiwyg-button-blockquote')
                                             }
                                         },
                                         DestinationWYSIWYG: $('#id-destination-wysiwyg')
@@ -87,11 +93,110 @@
                 ).Activate();
                 
                 // Let's init wysiwyg
-                var loDocument = $("#id-destination-wysiwyg").contents().get(0);
+                var loDocument = $('#id-destination-wysiwyg').contents().get(0);
                 loDocument.open();
                 loDocument.write('<p>123123123213</p>');
                 loDocument.close();
                 loDocument.designMode = 'on';
+
+                $('#id-right-switch-container-wysiwyg-button-h1').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('formatBlock', false, 'H1');
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-h2').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('formatBlock', false, 'H2');
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-h3').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('formatBlock', false, 'H3');
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-para').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('formatBlock', false, 'P');
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-bold').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('bold', false, null);
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-italic').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('italic', false, null);
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-underline').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('underline', false, null);
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-strikethrough').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('strikeThrough', false, null);
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-a-left').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('justifyLeft', false, null);
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-a-center').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('justifyCenter', false, null);
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-a-right').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('justifyRight', false, null);
+                
+                    e.preventDefault();
+                });
+
+                $('#id-right-switch-container-wysiwyg-button-ul').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('insertUnorderedList', false, null);
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-ol').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('insertOrderedList', false, null);
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-indent').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('indent', false, null);
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-outdent').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('outdent', false, null);
+                
+                    e.preventDefault();
+                });
+                $('#id-right-switch-container-wysiwyg-button-blockquote').bind( 'click', function(e) {
+                
+                    loDocument.execCommand('formatBlock', false, 'BLOCKQUOTE');
+                
+                    e.preventDefault();
+                });
+                
             });
         </script>
     </head>
@@ -128,6 +233,7 @@
                             <a href="#" id="id-right-switch-container-wysiwyg-button-h1"></a>
                             <a href="#" id="id-right-switch-container-wysiwyg-button-h2"></a>
                             <a href="#" id="id-right-switch-container-wysiwyg-button-h3"></a>
+                            <a href="#" id="id-right-switch-container-wysiwyg-button-para"></a>
                             <span></span>
                             <a href="#" id="id-right-switch-container-wysiwyg-button-bold"></a>
                             <a href="#" id="id-right-switch-container-wysiwyg-button-italic"></a>
@@ -137,6 +243,13 @@
                             <a href="#" id="id-right-switch-container-wysiwyg-button-a-left"></a>
                             <a href="#" id="id-right-switch-container-wysiwyg-button-a-center"></a>
                             <a href="#" id="id-right-switch-container-wysiwyg-button-a-right"></a>
+                            <span></span>
+                            <a href="#" id="id-right-switch-container-wysiwyg-button-ul"></a>
+                            <a href="#" id="id-right-switch-container-wysiwyg-button-ol"></a>
+                            <a href="#" id="id-right-switch-container-wysiwyg-button-indent"></a>
+                            <a href="#" id="id-right-switch-container-wysiwyg-button-outdent"></a>
+                            <span></span>
+                            <a href="#" id="id-right-switch-container-wysiwyg-button-blockquote"></a>
                         </div>
                     </div>
 
