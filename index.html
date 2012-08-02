@@ -11,6 +11,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
         <script src="js/namespace.js"></script>
+        <script src="js/wysiwyg.js"></script>
         <script src="js/pt.model.js"></script>
         <script src="js/pt.view.js"></script>
         <script src="js/pt.controller.js"></script>
@@ -91,111 +92,6 @@
                     ),
                     new MainPage.Model()
                 ).Activate();
-                
-                // Let's init wysiwyg
-                var loDocument = $('#id-destination-wysiwyg').contents().get(0);
-                loDocument.open();
-                loDocument.write('<p>123123123213</p>');
-                loDocument.close();
-                loDocument.designMode = 'on';
-
-                $('#id-right-switch-container-wysiwyg-button-h1').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('formatBlock', false, 'H1');
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-h2').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('formatBlock', false, 'H2');
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-h3').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('formatBlock', false, 'H3');
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-para').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('formatBlock', false, 'P');
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-bold').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('bold', false, null);
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-italic').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('italic', false, null);
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-underline').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('underline', false, null);
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-strikethrough').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('strikeThrough', false, null);
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-a-left').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('justifyLeft', false, null);
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-a-center').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('justifyCenter', false, null);
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-a-right').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('justifyRight', false, null);
-                
-                    e.preventDefault();
-                });
-
-                $('#id-right-switch-container-wysiwyg-button-ul').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('insertUnorderedList', false, null);
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-ol').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('insertOrderedList', false, null);
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-indent').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('indent', false, null);
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-outdent').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('outdent', false, null);
-                
-                    e.preventDefault();
-                });
-                $('#id-right-switch-container-wysiwyg-button-blockquote').bind( 'click', function(e) {
-                
-                    loDocument.execCommand('formatBlock', false, 'BLOCKQUOTE');
-                
-                    e.preventDefault();
-                });
                 
             });
         </script>

@@ -5,62 +5,47 @@ MainPage.Model = function() {
     this.OutgoingEvents = {
         LeftPanel: {
             Tabs: {
-                0: {
-                    OnHide: null,
-                    OnShow: null
-                },
-                1: {
-                    OnHide: null,
-                    OnShow: null
-                }
+                OnHide: null,
+                OnShow: null
             }
         },
         RightPanel: {
             Tabs: {
-                0: {
-                    OnHide: null,
-                    OnShow: null
-                },
-                1: {
-                    OnHide: null,
-                    OnShow: null
-                }
-            }
+                OnHide: null,
+                OnShow: null
+            },
+            OnSetWYSIWYGFromPlainText: null,
+            OnSetPlainTextFromWYSIWYG: null,
+            OnPlainTextNeeded: null,
+            OnWYSIWYGTextNeeded: null
         }
     };
     
     this.IncomingEvents = {
         LeftPanel: {
             Tabs: {
-                0: {
-                    Activate: function() { _DoChangeTabOnLeftPanel(0); }
-                },
-                1: {
-                    Activate: function() { _DoChangeTabOnLeftPanel(1); }
-                }
+                Activate: function( pnTabNum ) { _DoChangeTabOnLeftPanel( pnTabNum ); }
             }
         },
         RightPanel: {
             Tabs: {
-                0: {
-                    Activate: function() { _DoChangeTabOnRightPanel(0); }
-                },
-                1: {
-                    Activate: function() { _DoChangeTabOnRightPanel(1); }
-                }
-            }
+                Activate: function( pnTabNum ) { _DoChangeTabOnRightPanel( pnTabNum ); }
+            },
+            SetPlainText: function( psText ) { _DoSetTextOnRightPanel( psText ); },
+            SetWYSIWYGText: function( psText ) { _DoSetTextOnRightPanel( psText ); }
         }
     };
 
     var _oSelf = this;
-    var _Call = function(f) { if (f != null) f(); }
+    var _Call = function(f, a1, a2, a3, a4, a5) { if (f != null) f(a1, a2, a3, a4, a5); }
 
     var State = {
         LeftPanel: {
             ActiveTab: 0
         },
         RightPanel: {
-            ActiveTab: 0
+            ActiveTab: 0,
+            PlainText: ''
         },
         Resetting: false
     };
@@ -71,8 +56,8 @@ MainPage.Model = function() {
 
         if (State.Resetting || (lnOldTab != pnNewTab))
         {
-            _Call( _oSelf.OutgoingEvents.LeftPanel.Tabs[lnOldTab].OnHide );
-            _Call( _oSelf.OutgoingEvents.LeftPanel.Tabs[pnNewTab].OnShow );
+            _Call( _oSelf.OutgoingEvents.LeftPanel.Tabs.OnHide( lnOldTab ) );
+            _Call( _oSelf.OutgoingEvents.LeftPanel.Tabs.OnShow( pnNewTab ) );
         }
 
         State.LeftPanel.ActiveTab = pnNewTab;
@@ -84,11 +69,29 @@ MainPage.Model = function() {
 
         if (State.Resetting || (lnOldTab != pnNewTab))
         {
-            _Call( _oSelf.OutgoingEvents.RightPanel.Tabs[lnOldTab].OnHide );
-            _Call( _oSelf.OutgoingEvents.RightPanel.Tabs[pnNewTab].OnShow );
-        }
+            _Call( _oSelf.OutgoingEvents.RightPanel.Tabs.OnHide( lnOldTab ) );
+            _Call( _oSelf.OutgoingEvents.RightPanel.Tabs.OnShow( pnNewTab ) );
 
-        State.RightPanel.ActiveTab = pnNewTab;
+
+            State.RightPanel.ActiveTab = pnNewTab;
+
+            if (State.RightPanel.ActiveTab == 0)
+                _Call( _oSelf.OutgoingEvents.RightPanel.OnPlainTextNeeded );
+
+            if (State.RightPanel.ActiveTab == 1)
+                _Call( _oSelf.OutgoingEvents.RightPanel.OnWYSIWYGTextNeeded );
+        }
+    };
+    
+    var _DoSetTextOnRightPanel = function ( psNewText ) {
+
+        State.RightPanel.PlainText = psNewText;        
+        
+        if (State.RightPanel.ActiveTab == 0)
+            _Call( _oSelf.OutgoingEvents.RightPanel.OnSetWYSIWYGFromPlainText, State.RightPanel.PlainText );
+            
+        if (State.RightPanel.ActiveTab == 1)
+            _Call( _oSelf.OutgoingEvents.RightPanel.OnSetPlainTextFromWYSIWYG, State.RightPanel.PlainText );
     };
 
     this.Activate = function() {
@@ -98,8 +101,9 @@ MainPage.Model = function() {
 
         State.Resetting = true;
 
-        _oSelf.IncomingEvents.LeftPanel.Tabs[0].Activate();
-        _oSelf.IncomingEvents.RightPanel.Tabs[0].Activate();
+        _oSelf.IncomingEvents.RightPanel.SetPlainText( '<p></p>' );
+        _oSelf.IncomingEvents.LeftPanel.Tabs.Activate( 0 );
+        _oSelf.IncomingEvents.RightPanel.Tabs.Activate( 0 );
 
         State.Resetting = false;
     };    
