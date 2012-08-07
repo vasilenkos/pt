@@ -30,6 +30,18 @@ Controls.WYSIWYG = function( poElement ) {
     this.Activate = function() {
 
         _DoInit();
+        
+        $('#id-left-switch-container-iframe-go-button').bind( 'click', function(e) {
+        
+            var loFrame = $('#id-source-iframe');
+            var lsFrameName = loFrame.attr('name');
+            var lsTarget = $('#id-left-switch-container-iframe-location').val();
+
+            loFrame.attr('src', lsTarget);
+            //window.frames[ lsFrameName ].location.reload();
+        
+            e.preventDefault();
+        });
 
         $('#id-right-switch-container-wysiwyg-button-h1').bind( 'click', function(e) {
         

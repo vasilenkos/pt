@@ -62,7 +62,7 @@ MainPage.Model = function() {
 
         State.LeftPanel.ActiveTab = pnNewTab;
     };
-
+		
     var _DoChangeTabOnRightPanel = function( pnNewTab ) {
 
         var lnOldTab = State.RightPanel.ActiveTab;
